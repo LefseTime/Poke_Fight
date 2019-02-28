@@ -1,4 +1,5 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
+import random
 
 def createPoke():
     valid = False
@@ -34,6 +35,34 @@ def createPoke():
 
     return user_poke
 
+
 def createWildPoke():
     types = ["SquirtGun","CharMangler","BulbousSore","MagiKrap"]
-    return MagiKrap("Krappy", "dude", "flop")
+    type = random.choice(types)
+    if type == "SquirtGun":
+        return SquirtGun("SquirtGun", "pew pew", "squish")
+    elif type == "BulbousSore":
+        return BulbousSore("BulbousSore", "mwow", "*festers squishily*")
+    elif type == "CharMangler":
+        return CharMangler("CharMangler", "eheheheh", "mmmmmnnnnn")
+    elif type == "MagiKrap":
+        return MagiKrap("MagiKrap", "*flop*", "*flop flop*")
+    
+
+def fight(user, wild):
+    finished = False
+    user_hp = user.hp
+    wild_hp = wild.hp
+    while not finished:
+        bround(user, wild, user_hp, wild_hp)
+        if user_hp == 0:
+            winner ="Wild"
+            finished = True
+        elif wild_hp == 0:
+            winner = "User"
+            finished = True
+    
+
+def bround(user, wild, user_hp, wild_hp):
+    
+    

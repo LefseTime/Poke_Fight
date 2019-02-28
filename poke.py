@@ -5,7 +5,7 @@ class Poke:
         self.sad_sound = sad_sound
 
 class BulbousSore(Poke):
-    def __init__(self, name, happy_sound,sad_sound):
+    def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
         self.attack = 5
         self.defense = 9
@@ -14,7 +14,7 @@ class BulbousSore(Poke):
         self.type = "BulbousSore"
 
 class CharMangler(Poke):
-    def __init__(self, name, happy_sound,sad_sound):
+    def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
         self.attack = 9
         self.defense = 4
@@ -23,7 +23,7 @@ class CharMangler(Poke):
         self.type = "CharMangler"
 
 class SquirtGun(Poke):
-    def __init__(self, name, happy_sound,sad_sound):
+    def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
         self.attack = 7
         self.defense = 7
@@ -32,7 +32,7 @@ class SquirtGun(Poke):
         self.type = "SquirtGun"
 
 class MagiKrap(Poke):
-    def __init__(self, name, happy_sound,sad_sound):
+    def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
         self.attack = 0
         self.defense = 0
