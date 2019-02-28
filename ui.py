@@ -1,3 +1,5 @@
+from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
+
 def createPoke():
     valid = False
     while not valid:
@@ -16,4 +18,18 @@ def createPoke():
             valid = True
 
     print("\nYour new {} looks up at you adoringly.\nIn the distance, a wild MulletEagle screeches, and a single tear rolls down your cheek.".format(type))
-    name = str(input("\nWhat would you like to name your precious {}? ".format(type)))
+    name = str(input("\nWhat would you like to name your precious {}? ".format(type))).title()
+    sad_sound = str(input("\n{} looks concerned about your judgment. What sound does {} make in its confusion? ".format(name,name)))
+    happy_sound = str(input("\n'Oh my sweet {}!' you think. Overcome with emotion, you sweep {} up in a loving embrace.\n{} makes a happy sound: ".format(name,name,name)))
+    
+
+    if type == "SquirtGun":
+        user_poke = SquirtGun(name, happy_sound,sad_sound)
+    elif type == "CharMangler":
+        user_poke = CharMangler(name,happy_sound,sad_sound)
+    elif type == "BulbousSore":
+        user_poke = BulbousSore(name,happy_sound,sad_sound)
+    elif type == "MagiKrap":
+        user_poke = MagiKrap(name,happy_sound,sad_sound)
+
+    return user_poke
