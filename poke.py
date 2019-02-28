@@ -11,6 +11,7 @@ class BulbousSore(Poke):
         self.defense = 9
         self.speed = 6
         self.hp = 26
+        self.type = "BulbousSore"
 
 class CharMangler(Poke):
     def __init__(self, name, happy_sound,sad_sound):
@@ -19,6 +20,7 @@ class CharMangler(Poke):
         self.defense = 4
         self.speed = 7
         self.hp = 20
+        self.type = "CharMangler"
 
 class SquirtGun(Poke):
     def __init__(self, name, happy_sound,sad_sound):
@@ -27,6 +29,7 @@ class SquirtGun(Poke):
         self.defense = 7
         self.speed = 5
         self.hp = 23
+        self.type = "SquirtGun"
 
 class MagiKrap(Poke):
     def __init__(self, name, happy_sound,sad_sound):
@@ -35,3 +38,4 @@ class MagiKrap(Poke):
         self.defense = 0
         self.speed = 0
         self.hp = 0
+        self.type = "MagiKrap"

@@ -21,7 +21,7 @@ def createPoke():
     name = str(input("\nWhat would you like to name your precious {}? ".format(type))).title()
     sad_sound = str(input("\n{} looks concerned about your judgment. What sound does {} make in its confusion? ".format(name,name)))
     happy_sound = str(input("\n'Oh my sweet {}!' you think. Overcome with emotion, you sweep {} up in a loving embrace.\n{} makes a happy sound: ".format(name,name,name)))
-    
+    print("'{}! {} indeed, you beautiful little {},' you coo.".format(happy_sound.title(), happy_sound.title(),type))
 
     if type == "SquirtGun":
         user_poke = SquirtGun(name, happy_sound,sad_sound)
@@ -33,3 +33,7 @@ def createPoke():
         user_poke = MagiKrap(name,happy_sound,sad_sound)
 
     return user_poke
+
+def createWildPoke():
+    types = ["SquirtGun","CharMangler","BulbousSore","MagiKrap"]
+    return MagiKrap("Krappy", "dude", "flop")
