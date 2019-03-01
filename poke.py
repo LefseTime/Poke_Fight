@@ -34,7 +34,7 @@ class SquirtGun(Poke):
 class MagiKrap(Poke):
     def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
-        self.attack = 0
+        self.attack = 1
         self.defense = 4
         self.speed = 1
         self.hp = 2
