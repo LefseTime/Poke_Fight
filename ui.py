@@ -1,7 +1,6 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
-import random
 
-def createPoke():
+def createUserPoke():
     valid = False
     while not valid:
         type_num = input("------------\n   Pokes  \n------------\n  1. SquirtGun\n  2. CharMangler\n  3. BulbousSore\n  4. MagiKrap\n------------\nWhich Poke do you choose? ")
@@ -35,34 +34,14 @@ def createPoke():
 
     return user_poke
 
+def chooseMove(poke):
+    valid = False
+    while not valid:
+        move = input('Would you like {} to attack(1), defend and regenerate hp(2), or choose for itself(3)? '.format(poke.name))
+        if move == "1" or move == "2" or move == "3":
+            valid = True
+            return move
 
-def createWildPoke():
-    types = ["SquirtGun","CharMangler","BulbousSore","MagiKrap"]
-    type = random.choice(types)
-    if type == "SquirtGun":
-        return SquirtGun("SquirtGun", "pew pew", "squish")
-    elif type == "BulbousSore":
-        return BulbousSore("BulbousSore", "mwow", "*festers squishily*")
-    elif type == "CharMangler":
-        return CharMangler("CharMangler", "eheheheh", "mmmmmnnnnn")
-    elif type == "MagiKrap":
-        return MagiKrap("MagiKrap", "*flop*", "*flop flop*")
-    
 
-def fight(user, wild):
-    finished = False
-    user_hp = user.hp
-    wild_hp = wild.hp
-    while not finished:
-        bround(user, wild, user_hp, wild_hp)
-        if user_hp == 0:
-            winner ="Wild"
-            finished = True
-        elif wild_hp == 0:
-            winner = "User"
-            finished = True
-    
-
-def bround(user, wild, user_hp, wild_hp):
-    
-    
+def encounterWildPoke(wild_poke):
+    print("\nSuddenly a wild {} appears. The {} wants to have a Poke_Fight™!\nSuddenly you realize... that is the name of this app!".format(wild_poke.type,wild_poke.type))

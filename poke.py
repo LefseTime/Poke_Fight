@@ -35,7 +35,7 @@ class MagiKrap(Poke):
     def __init__(self, name, happy_sound, sad_sound):
         super().__init__(name, happy_sound, sad_sound)
         self.attack = 0
-        self.defense = 0
-        self.speed = 0
-        self.hp = 0
+        self.defense = 4
+        self.speed = 1
+        self.hp = 2
         self.type = "MagiKrap"
