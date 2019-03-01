@@ -75,7 +75,7 @@ def newPokeOption(poke):
     return input("Throw away {} like a piece of garbage and continue with a new Poke? (y/n) ".format(poke.name))
 
 def intro():
-    input("\n\n\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n(press enter to continue)")
+    input("\n\n\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n\t\t\t(press enter to continue)\n")
     input("Welcome to the wonderful world of JoeToe!")
     input("My name is Scholar Tree, and I'll be your guide!")
     return input("Would you like to be serenaded with the lengthy and unique Song of my People before we get down to nuts and bolts? (y/n) ")
