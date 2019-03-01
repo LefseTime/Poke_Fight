@@ -1,6 +1,7 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
+import logic
 
-def createUserPoke():
+def chooseType():
     valid = False
     while not valid:
         type_num = input("------------\n   Pokes  \n------------\n  1. SquirtGun\n  2. CharMangler\n  3. BulbousSore\n  4. MagiKrap\n------------\nWhich Poke do you choose? ")
@@ -16,23 +17,23 @@ def createUserPoke():
         elif type_num == "4" or type_num == "MagiKrap":
             type = 'MagiKrap'
             valid = True
+    return type
 
+def chooseName(type):
     print("\nYour new {} looks up at you adoringly.\nIn the distance, a wild MulletEagle screeches, and a single tear rolls down your cheek.".format(type))
     name = str(input("\nWhat would you like to name your precious {}? ".format(type))).title()
+
+    return name
+
+def chooseSad(name):
     sad_sound = str(input("\n{} looks concerned about your judgment. What sound does {} make in its confusion? ".format(name,name)))
+    return sad_sound
+
+def chooseHappy(name): 
     happy_sound = str(input("\n'Oh my sweet {}!' you think. Overcome with emotion, you sweep {} up in a loving embrace.\n{} makes a happy sound: ".format(name,name,name)))
     print("'{}! {} indeed, you beautiful little {},' you coo.".format(happy_sound.title(), happy_sound.title(),type))
+    return happy_sound
 
-    if type == "SquirtGun":
-        user_poke = SquirtGun(name, happy_sound,sad_sound)
-    elif type == "CharMangler":
-        user_poke = CharMangler(name,happy_sound,sad_sound)
-    elif type == "BulbousSore":
-        user_poke = BulbousSore(name,happy_sound,sad_sound)
-    elif type == "MagiKrap":
-        user_poke = MagiKrap(name,happy_sound,sad_sound)
-
-    return user_poke
 
 def chooseMove(poke):
     valid = False
@@ -42,6 +43,11 @@ def chooseMove(poke):
             valid = True
             return move
 
+def displayHpStatus(user_name, wild_type, user_hp, wild_hp):
+    print("\n----------\n  HP Status  \n----------\n{}: {}\n{}: {}\n".format(user_name, str(user_hp), wild_type, str(wild_hp)))
 
 def encounterWildPoke(wild_poke):
-    print("\nSuddenly a wild {} appears. The {} wants to have a Poke_Fight™!\nSuddenly you realize... that is the name of this app!".format(wild_poke.type,wild_poke.type))
+    print("\nSuddenly a wild {} appears. The {} wants to have a Poke_Fight™!".format(wild_poke.type,wild_poke.type))
+    print("\nSuddenly you realize... that is the name of this app!")
+
+        
