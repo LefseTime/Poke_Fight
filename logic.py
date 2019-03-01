@@ -1,6 +1,5 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
-import random
-import ui
+import random, ui
 
 def initializeUserPoke(type, name, happy, sad):
 
@@ -34,9 +33,14 @@ def fight(user, wild):
         ui.displayHpStatus(user.name, wild.type, user_hp, wild_hp)
 
         user_move = ui.chooseMove(user)
-        if user_move == "3":
+        if user_move == "4":
             user_move = randomMove()
         wild_move = randomMove()
+
+        if user_move == "3":
+            ui.flail(user)
+        if wild_move == "3":
+            ui.flail(wild)
 
         user_defense = user.defense
         wild_defense = wild.defense
@@ -54,13 +58,18 @@ def fight(user, wild):
             if first_move.name == user.name:
                 wild_hp = attack(user, wild_defense, wild_hp)
                 ui.displayAttack(user, wild, wild_hp)
+                if user_hp <= 0 or wild_hp <=0:
+                    break
                 user_hp = attack(wild, user_defense, user_hp)
                 ui.displayAttack(wild, user, user_hp)
             else:
                 user_hp = attack(wild, user_defense, user_hp)
                 ui.displayAttack(wild, user, user_hp)
+                if user_hp <= 0 or wild_hp <=0:
+                    break
                 wild_hp = attack(user, wild_defense, wild_hp)
                 ui.displayAttack(user, wild, wild_hp)
+                
             
         elif user_move == "1":
             wild_hp = attack(user, wild_defense, wild_hp)
@@ -71,12 +80,10 @@ def fight(user, wild):
 
 
     if user_hp <= 0:
-        winner ="Wild"
+        return "lose"
             
     elif wild_hp <= 0:
-        winner = "User"
-            
-    print(winner + " wins!")
+        return "win"
 
 def determineOrder(user, wild):
     user_speed = user.speed * random.randint(0,3)
@@ -88,10 +95,10 @@ def determineOrder(user, wild):
         return wild
     
 def defend(poke):
-    return poke.defense * (random.randint(2,4)/2)
+    return int(poke.defense * (random.randint(2,4)/2))
 
 def regenerate(hp):
-    return hp + random.randint(0,3)
+    return int(hp + random.randint(0,3))
 
 def attack(attacker, def_def, def_hp):
     att_pwr = attacker.attack + random.randint(-1,4)
@@ -100,10 +107,10 @@ def attack(attacker, def_def, def_hp):
     if difference < 2:
         difference = 2
     def_hp = def_hp - difference
-    return def_hp
+    return int(def_hp)
 
 def randomMove():
-    return str(random.randint(1,2))
+    return str(random.randint(1,3))
     
 
 

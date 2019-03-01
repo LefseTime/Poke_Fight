@@ -1,5 +1,4 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
-import logic
 
 def chooseType():
     valid = False
@@ -36,8 +35,8 @@ def chooseHappy(name, type):
 def chooseMove(poke):
     valid = False
     while not valid:
-        move = input('Would you like {} to attack(1), defend and regenerate hp(2), or choose for itself(3)? '.format(poke.name))
-        if move == "1" or move == "2" or move == "3":
+        move = input('Would you like {} to attack(1), defend and regenerate hp(2), flail helplessly(3), or choose for itself(4)? '.format(poke.name))
+        if move == "1" or move == "2" or move == "3" or move == "4":
             return move
 
 def displayHpStatus(user_name, wild_type, user_hp, wild_hp):
@@ -53,3 +52,26 @@ def displayDefense(poke, hp):
 
 def displayAttack(attacker, defender, hp):
     input("{} attacks, bringing {}'s HP to {}!".format(attacker.name, defender.name, hp))
+
+def flail(poke):
+    input("{} flops about helplessly.".format(poke.name))
+
+def win(poke):
+    input("You win!")
+    return input("Continue your quest? (y/n) ")
+
+def lose(poke):
+    input("You lose!")
+    return input("Continue your quest? (y/n) ")
+
+def newPokeOption(poke):
+    return input("Throw away {} and continue with a new Poke? (y/n) ".format(poke.name))
+
+def exit(poke):
+    sound = poke.sad_sound
+    cap_sound = poke.sad_sound.title()
+    input("\nIn your absence, the magical world of JoeToe slips into darkness and chaos.")
+    input("\nThe evil 'Group Rock' rises to power, forcing thousands into questionable fashion choices and sadness.")
+    input("\nEven {} is taken in, and grows a flowing soft mullet as you slowly slide from its memory.".format(poke.name))
+    input("\n'{}, {}...' it cries sadly into its silken tresses each night. '{}, {}...'".format(cap_sound,sound,cap_sound,sound))
+    input("\n\nFarewell, dear Trainer. Farewell.\n")
