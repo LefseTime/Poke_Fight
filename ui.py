@@ -1,6 +1,7 @@
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
 
 def chooseType():
+    input("Well, well then! Looks like you'll need a Poke, lil' whippersnapper!")
     valid = False
     while not valid:
         type_num = input("-----------------\n   Pokes  \n-----------------\n  1. SquirtGun\n  2. CharMangler\n  3. BulbousSore\n  4. MagiKrap\n-----------------\nWhich Poke do you choose? ")
@@ -43,9 +44,9 @@ def displayHpStatus(user_name, wild_type, user_hp, wild_hp):
     print("\n---------------\n  HP Status  \n---------------\n{}: {}\nWild {}: {}\n".format(user_name, str(user_hp), wild_type, str(wild_hp)))
 
 def encounterWildPoke(wild_poke):
-    input("\nSuddenly a wild {} appears. The {} wants to have a Poke_Fight™!".format(wild_poke.type,wild_poke.type))
+    input("\nSuddenly a wild {} appears. The {} wants to have a\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n".format(wild_poke.type,wild_poke.type))
     input("\nSuddenly you realize... ")
-    input("\n\t...that is the name of this app!")
+    input("\n\t--------------------------------------------------------\n\t\t... THAT IS THE NAME OF THIS APP!!!!  \n\t--------------------------------------------------------\n")
 
 def displayDefense(poke, hp):
     input("{} is defending! {} regenerates HP back up to {}!".format(poke, poke, hp))
@@ -57,21 +58,46 @@ def flail(poke):
     input("{} flops about helplessly.".format(poke.name))
 
 def win(poke):
-    input("You win!")
+    name = poke.name
+    cap_sound = poke.happy_sound.title()
+    sound = poke.happy_sound.lower()
+    input("You win! {} looks up at you, eyes misting over. '{}, {}!' For the first time in your life, you allow the tears to stream freely down your stoic face. '{}, {}...' you whisper back.".format(name, cap_sound,sound,cap_sound,sound))
     return input("Continue your quest? (y/n) ")
 
 def lose(poke):
-    input("You lose!")
-    return input("Continue your quest? (y/n) ")
+    name = poke.name
+    cap_sound = poke.sad_sound.title()
+    sound = poke.sad_sound.lower()
+    input("You lose! {} looks up at you, eyes misting over. '{}, {}!' For the first time in your life, you allow the tears to stream freely down your stoic face. '{}, {}...' you whisper back.".format(name, cap_sound,sound,cap_sound,sound))
+    return input("Continue beating up wild Pokes? (y/n) ")
 
 def newPokeOption(poke):
-    return input("Throw away {} and continue with a new Poke? (y/n) ".format(poke.name))
+    return input("Throw away {} like a piece of garbage and continue with a new Poke? (y/n) ".format(poke.name))
+
+def intro():
+    input("\n\n\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n(press enter to continue)")
+    input("Welcome to the wonderful world of JoeToe!")
+    input("My name is Scholar Tree, and I'll be your guide!")
+    return input("Would you like to be serenaded with the lengthy and unique Song of my People before we get down to nuts and bolts? (y/n) ")
+
+def songOfPeople():
+    print("\n🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵")
+    input("I hope to be the top one, like no one else waaaas!!!!")
+    input("To teach them is my true test, to catch them is my purpooooosssseee!!!!!!")
+    input("I will journey around the earth, looking far awaaaaayyyyyyy!!!!!")
+    input("Every Poke, to comprehend the strength that's withiiiiinnn!!!!!")
+    input("\nPOKES!!!!!")
+    input("\nOoh, you're my favorite companion in a land we must proteeeccctttt!!!")
+    input("\nPOKES!!!!!")
+    input("\nHave to trap them all!!!!")
+    input("\nPOKES!!!!!")
+    input("🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵🎵\n")
 
 def exit(poke):
-    sound = poke.sad_sound
+    sound = poke.sad_sound.lower()
     cap_sound = poke.sad_sound.title()
     input("\nIn your absence, the magical world of JoeToe slips into darkness and chaos.")
     input("\nThe evil 'Group Rock' rises to power, forcing thousands into questionable fashion choices and sadness.")
     input("\nEven {} is taken in, and grows a flowing soft mullet as you slowly slide from its memory.".format(poke.name))
     input("\n'{}, {}...' it cries sadly into its silken tresses each night. '{}, {}...'".format(cap_sound,sound,cap_sound,sound))
-    input("\n\nFarewell, dear Trainer. Farewell.\n")
+    input("\n\nFarewell, dear Trainer. You were our last hope, and you abandoned us. Farewell.\n\n\n")

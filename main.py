@@ -11,11 +11,15 @@ def newUserPoke():
     return logic.initializeUserPoke(poke_type, name, happy_sound, sad_sound)
 
 
-keepGoing = True
-create_new = "none"
+ballad = ui.intro()
+
+if ballad == "y" or ballad == "yes":
+    ui.songOfPeople()
 
 user_poke = newUserPoke()
 
+keepGoing = True
+create_new = "none"
 while keepGoing:
 
     if create_new == "y" or create_new == "yes":
