@@ -1,6 +1,5 @@
 from poke import Poke, BulbousSore, CharMangler, SquirtGun, MagiKrap
-import ui, logic, sys
-
+import logic, sys, ui
 
 def newUserPoke():
     poke_type = ui.chooseType()
