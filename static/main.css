@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    margin: 3em 2em;
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+}
+
+button {
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    outline: none;
+}
+
+button:hover, :active, :focus {
+    color: red;
+}
