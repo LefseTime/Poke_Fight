@@ -51,6 +51,9 @@ function chooseType() {
 };
 
 let poke_type;
+let poke_name;
+let sad_sound;
+let happy_sound;
 function promptName(type) {
     $.ajax({
         url: server + "api/prompt-name",
@@ -73,9 +76,74 @@ function promptName(type) {
     })
 };
 
+function promptSad(poke_name) {
+    $.ajax({
+        url: server + "api/prompt-sad",
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({"name": poke_name}),
+        dataType: 'json'
+    }).done(function (result) {
+        texts = result.texts
+        counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    $('#sad-input').show()
+                    clearInterval(timer);
+                }
+            }, 2000)
+        
+    })
+};
+
+function promptHappy(poke_name) {
+    $.ajax({
+        url: server + "api/prompt-happy",
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({"name": poke_name}),
+        dataType: 'json'
+    }).done(function (result) {
+        texts = result.texts
+        counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    $('#happy-input').show()
+                    clearInterval(timer);
+                }
+            }, 2000)
+        
+    })
+};
+
 $('#poke-choice-buttons').on('click', '.choose-type', function(){
     poke_type = this.value;
     $('#poke-choice-buttons').hide();
     $('#main').html("")
     promptName(poke_type);
+})
+
+$('#name-input-button').on('click', function(){
+    poke_name = $('#name-input-text').val();
+    $('#name-input').hide();
+    $('#main').html("")
+    promptSad(poke_name);
+})
+
+$('#sad-input-button').on('click', function(){
+    sad_sound = $('#sad-input-text').val();
+    $('#sad-input').hide();
+    $('#main').html("")
+    promptHappy(poke_name);
+})
+
+$('#happy-input-button').on('click', function(){
+    happy_sound = $('#happy-input-text').val();
+    $('#happy-input').hide();
+    $('#main').html("")
+    console.log(happy_sound)
 })
