@@ -94,7 +94,6 @@ function promptSad(poke_name) {
                     clearInterval(timer);
                 }
             }, 2000)
-        
     })
 };
 
@@ -105,20 +104,56 @@ function promptHappy(poke_name) {
         contentType: 'application/json',
         data: JSON.stringify({"name": poke_name}),
         dataType: 'json'
-    }).done(function (result) {
-        texts = result.texts
-        counter = 0,
-            timer = setInterval(function () {
-                displayText(texts[counter]);
-                counter++
-                if (counter === texts.length) {
-                    $('#happy-input').show()
-                    clearInterval(timer);
-                }
-            }, 2000)
-        
+    }).done(function(result){
+        texts = result.texts;
+        var pokePromise = new Promise(function(resolve, reject) {
+            timeout(texts)
+            if (resolve){
+              console.log(resolve)
+            }
+            else {
+              reject(Error("It broke"));
+            }
+          });
+        pokePromise.then(encounterWild())   
     })
 };
+
+
+function timeout(texts){
+    counter = 0,
+    timer = setInterval(function () {
+        displayText(texts[counter]);
+        counter++
+        if (counter === texts.length) {
+            $('#happy-input').show()
+            clearInterval(timer);
+        }
+    }, 2000)
+}
+
+function encounterWild(){
+    console.log(poke_type, poke_name, happy_sound, sad_sound)
+        $.ajax({
+            url: server + "api/initialize-user",
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({"type": poke_type, "name": poke_name, "happy": happy_sound, "sad": sad_sound}),
+            dataType: 'json'
+        }).done(function (result) {
+            texts = result.texts
+            counter = 0,
+                timer = setInterval(function () {
+                    displayText(texts[counter]);
+                    counter++
+                    if (counter === texts.length) {
+                        $('#happy-input').show()
+                        clearInterval(timer);
+                    }
+                }, 2000)
+            
+        })
+}
 
 $('#poke-choice-buttons').on('click', '.choose-type', function(){
     poke_type = this.value;

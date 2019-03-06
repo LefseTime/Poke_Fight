@@ -19,3 +19,7 @@ def prompt_sad(name):
 def prompt_happy(name):
     texts = ["'Oh my sweet {}!' you think.".format(name.title()), "Overcome with emotion, you sweep {} up in a loving embrace.".format(name.title()), "{} makes a happy sound: ".format(name.title())]
     return texts
+
+def encounterWildPoke(wild_poke):
+    texts = ["Suddenly a wild {} appears.".format(wild_poke.type), "The {} wants to have a...".format(wild_poke.type), "POKE_FIGHT™", "Suddenly you realize...", "THAT IS THE NAME OF THIS APP!!!!"]
+    return texts

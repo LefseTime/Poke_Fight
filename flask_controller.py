@@ -56,7 +56,11 @@ def initialize_user():
     json_data = request.get_json()
     user_poke = logic.initializeUserPoke(json_data['type'], json_data['name'], json_data['happy'], json_data['sad'])
     wild_poke = logic.createWildPoke()
-    pokeFight(user_poke, wild_poke)
+    return jsonify({
+        'status': 'success',
+        'texts': ui.encounterWildPoke(wild_poke)
+    })
+    # logic.fight(user_poke, wild_poke)
 
 if __name__ == '__main__':
     app.run(debug=True)
