@@ -3,9 +3,7 @@ from fight import Round
 import random
 import ui
 
-
 def initializeUserPoke(type, name, happy, sad):
-
     if type == "SquirtGun":
         return SquirtGun(name, happy, sad)
     elif type == "CharMangler":
@@ -80,14 +78,14 @@ def round(new_round):
             wild_hp = attack(user, wild_defense, wild_hp)
             ui.displayAttack(user, wild, wild_hp)
             if user_hp <= 0 or wild_hp <= 0:
-                return
+                return Round(user, user_hp, wild, wild_hp)
             user_hp = attack(wild, user_defense, user_hp)
             ui.displayAttack(wild, user, user_hp)
         else:
             user_hp = attack(wild, user_defense, user_hp)
             ui.displayAttack(wild, user, user_hp)
             if user_hp <= 0 or wild_hp <= 0:
-                return
+                return Round(user, user_hp, wild, wild_hp)
             wild_hp = attack(user, wild_defense, wild_hp)
             ui.displayAttack(user, wild, wild_hp)
 

@@ -9,7 +9,6 @@ def newUserPoke():
 
     return logic.initializeUserPoke(poke_type, name, happy_sound, sad_sound)
 
-
 ballad = ui.intro()
 
 if ballad == "y" or ballad == "yes":
