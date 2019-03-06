@@ -6,7 +6,6 @@ $('#begin').on('click', function () {
         method: 'GET',
         datatype: 'json'
     }).done(function (result) {
-        console.log(result)
         $('#begin').hide();
         $('#main').show();
         let texts = result.texts
@@ -18,7 +17,7 @@ $('#begin').on('click', function () {
                     $('#yes-no-song').show()
                     clearInterval(timer);
                 }
-            }, 3000)
+            }, 2000)
         
     })
 })
@@ -27,10 +26,6 @@ $('#no-song').on('click', function () {
     $('#yes-no-song').hide();
     $('#main').html(`<p>Well, well then! Looks like you'll need a Poke, lil' whippersnapper!</p>`)
     chooseType();
-})
-
-$('.choose-type').on('click', function(){
-    console.log('yooo')
 })
 
 function displayText(text) {
@@ -45,11 +40,42 @@ function chooseType() {
     }).done(function (result) {
         types = result.types
         timer = setInterval(function () {
-            displayText("Which Poke do you choose?")
+            displayText("Which Poke do you choose?");
+            $('#poke-choice-buttons').show();
             types.forEach(type => {
-                displayText(`<button class="choose-type" value="${type}">${type}</button>`);
+                $('#poke-choice-buttons').append(`<button type='button' class="choose-type" id="type" value="${type}">${type}</button>`);
             });
             clearInterval(timer);
         }, 2000)
     })
 };
+
+let poke_type;
+function promptName(type) {
+    $.ajax({
+        url: server + "api/prompt-name",
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({"type": type}),
+        dataType: 'json'
+    }).done(function (result) {
+        texts = result.texts
+        counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    $('#name-input').show()
+                    clearInterval(timer);
+                }
+            }, 2000)
+        
+    })
+};
+
+$('#poke-choice-buttons').on('click', '.choose-type', function(){
+    poke_type = this.value;
+    $('#poke-choice-buttons').hide();
+    $('#main').html("")
+    promptName(poke_type);
+})

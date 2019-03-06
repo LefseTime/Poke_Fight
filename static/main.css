@@ -19,3 +19,9 @@ button {
 button:hover, :active, :focus {
     color: red;
 }
+
+input{
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+    text-align: center;
+}
