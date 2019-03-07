@@ -2,9 +2,38 @@ body {
     text-align: center;
     background-color: black;
     color: aliceblue;
-    margin: 3em 2em;
+    margin: 1em 2em;
     font-family: 'VT323', monospace;
     font-size: 2em;
+}
+
+#logo-div {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 2em;
+    margin: 0em 2em 0em 2em;
+    color: red;
+}
+
+#hp-status {
+    font-size: 2em;
+    margin-bottom: 1.5em;
+}
+
+#statuses {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+#user-status, #wild-status {
+    margin: 0em, 4em;
+    font-size: .5em;
+}
+
+#poke-choice-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around; 
 }
 
 button {

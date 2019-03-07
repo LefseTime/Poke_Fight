@@ -14,7 +14,6 @@ def pokeFight(user_poke, wild_poke):
     logic.fight(user_poke, wild_poke)
 
 
-
 @app.route("/api/intro", methods=['GET'])
 def intro():
     return jsonify({
@@ -62,7 +61,7 @@ def initialize_user():
     return jsonify({
         'status': 'success',
         'texts': ui.encounterWildPoke(wild_poke),
-        'user': {'name': user_poke.name, 'hp': user_poke.hp},
+        'user': {'name': user_poke.name.title(), 'hp': user_poke.hp},
         'wild': {'name': wild_poke.name, 'hp': wild_poke.hp}
     })
 

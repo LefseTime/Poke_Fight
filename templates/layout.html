@@ -8,12 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon from: https://www.iconfinder.com/icons/214848/longico_pikachu_pokeball_pokemon_icon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=VT323|Luckiest+Guy" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename = 'main.css') }}">
 
 </head>
 
 <body>
+    <div id='logo-div'>
+        Poke_Fight™
+    </div>
+    <hr>
     {% block content %}
     {% endblock content %}
 
