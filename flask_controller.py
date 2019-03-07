@@ -1,4 +1,6 @@
 from flask import Flask, render_template, url_for, jsonify, request
+from fight import Fight, Round
+from poke import Poke, BulbousSore, CharMangler, SquirtGun, MagiKrap
 app = Flask(__name__)
 import flask_ui as ui
 import flask_logic as logic
@@ -56,11 +58,24 @@ def initialize_user():
     json_data = request.get_json()
     user_poke = logic.initializeUserPoke(json_data['type'], json_data['name'], json_data['happy'], json_data['sad'])
     wild_poke = logic.createWildPoke()
+    fight = logic.initializeFight(user_poke, wild_poke)
     return jsonify({
         'status': 'success',
-        'texts': ui.encounterWildPoke(wild_poke)
+        'texts': ui.encounterWildPoke(wild_poke),
+        'user': {'name': user_poke.name, 'hp': user_poke.hp},
+        'wild': {'name': wild_poke.name, 'hp': wild_poke.hp}
     })
-    # logic.fight(user_poke, wild_poke)
+
+@app.route("/api/round", methods=['POST'])
+def initialize_round():
+    json_data = request.get_json()
+    move = json_data['move']
+    return jsonify({
+        'status': 'success',
+        'move': move
+    })
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

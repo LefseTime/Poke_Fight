@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Poke_Fight</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon from: https://www.iconfinder.com/icons/214848/longico_pikachu_pokeball_pokemon_icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename = 'main.css') }}">
 
@@ -16,7 +18,6 @@
     {% endblock content %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
     <script src="{{ url_for('static', filename = 'main.js') }}"></script>
 </body>
 
