@@ -9,19 +9,68 @@
     <!-- favicon from: https://www.iconfinder.com/icons/214848/longico_pikachu_pokeball_pokemon_icon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=VT323|Luckiest+Guy" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename = 'main.css') }}">
 
 </head>
 
 <body>
-    <div id='logo-div'>
-        Poke_Fight™
-    </div>
-    <hr>
+    <header>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="" id="text-speed-toggle" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Text Speed
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <button id="slow">Slow</button>
+                        <button id="medium">Medium</button>
+                        <button id="fast">Fast</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='logo-div'>
+            Poke_Fight™
+        </div>
+        <div id="spacer">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="" id="text-speed-toggle" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Text Speed
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <button id="slow">Slow</button>
+                            <button id="medium">Medium</button>
+                            <button id="fast">Fast</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     {% block content %}
     {% endblock content %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'main.js') }}"></script>
 </body>
 

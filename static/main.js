@@ -128,6 +128,18 @@ function makeMove(move) {
     })
 }
 
+$('#slow').on('click', function () {
+    textSpeed = 3000;
+})
+
+$('#medium').on('click', function () {
+    textSpeed = 2000;
+})
+
+$('#fast').on('click', function () {
+    textSpeed = 1000;
+})
+
 $('#begin').on('click', function () {
     $.ajax({
         url: server + "api/intro",

@@ -2,15 +2,59 @@ body {
     text-align: center;
     background-color: black;
     color: aliceblue;
-    margin: 1em 2em;
+    margin: 1em 0em;
     font-family: 'VT323', monospace;
     font-size: 2em;
 }
 
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#start-div {
+    display: flex;
+    justify-content: center;
+}
+
+#main {
+    display: inline-block;
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+/* p {
+    margin: .5em, 50em;
+} */
+
+.accordion, .card {
+    border: black;
+    margin-right: auto;
+}
+
+#spacer {
+    margin-left: auto;
+    visibility: hidden;
+}
+
+.card-header, .card-body {
+    background-color: black;
+    border: black;
+    font-size: .5em;
+    text-align: left;
+}
+
+#text-speed-toggle {
+    font-size: 1em;
+    text-align: left;
+    margin-left: 0;
+}
+
 #logo-div {
+    text-align: center;
     font-family: 'Luckiest Guy', cursive;
     font-size: 2em;
-    margin: 0em 2em 0em 2em;
     color: red;
 }
 
@@ -47,6 +91,10 @@ button {
 
 button:hover, :active, :focus {
     color: red;
+}
+
+#begin {
+    margin-top: 3em;
 }
 
 input{
