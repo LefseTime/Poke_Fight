@@ -1,4 +1,5 @@
 const server = 'http://localhost:5000/'
+let textSpeed = 500
 
 $('#begin').on('click', function () {
     $.ajax({
@@ -9,16 +10,8 @@ $('#begin').on('click', function () {
         $('#begin').hide();
         $('#main').show();
         let texts = result.texts
-        counter = 0,
-            timer = setInterval(function () {
-                displayText(texts[counter]);
-                counter++
-                if (counter === texts.length) {
-                    $('#yes-no-song').show()
-                    clearInterval(timer);
-                }
-            }, 2000)
-        
+
+        timeout(texts, "#yes-no-song");
     })
 })
 
@@ -46,7 +39,7 @@ function chooseType() {
                 $('#poke-choice-buttons').append(`<button type='button' class="choose-type" id="type" value="${type}">${type}</button>`);
             });
             clearInterval(timer);
-        }, 2000)
+        }, textSpeed)
     })
 };
 
@@ -59,20 +52,11 @@ function promptName(type) {
         url: server + "api/prompt-name",
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({"type": type}),
+        data: JSON.stringify({ "type": type }),
         dataType: 'json'
     }).done(function (result) {
         texts = result.texts
-        counter = 0,
-            timer = setInterval(function () {
-                displayText(texts[counter]);
-                counter++
-                if (counter === texts.length) {
-                    $('#name-input').show()
-                    clearInterval(timer);
-                }
-            }, 2000)
-        
+        timeout(texts, "#name-input")
     })
 };
 
@@ -81,19 +65,11 @@ function promptSad(poke_name) {
         url: server + "api/prompt-sad",
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({"name": poke_name}),
+        data: JSON.stringify({ "name": poke_name }),
         dataType: 'json'
     }).done(function (result) {
         texts = result.texts
-        counter = 0,
-            timer = setInterval(function () {
-                displayText(texts[counter]);
-                counter++
-                if (counter === texts.length) {
-                    $('#sad-input').show()
-                    clearInterval(timer);
-                }
-            }, 2000)
+        timeout(texts, '#sad-input')
     })
 };
 
@@ -102,83 +78,73 @@ function promptHappy(poke_name) {
         url: server + "api/prompt-happy",
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({"name": poke_name}),
+        data: JSON.stringify({ "name": poke_name }),
         dataType: 'json'
-    }).done(function(result){
+    }).done(function (result) {
         texts = result.texts;
-        var pokePromise = new Promise(function(resolve, reject) {
-            timeout(texts)
-            if (resolve){
-              console.log(resolve)
-            }
-            else {
-              reject(Error("It broke"));
-            }
-          });
-        pokePromise.then(encounterWild())   
+        timeout(texts, '#happy-input')
     })
 };
 
 
-function timeout(texts){
+function timeout(texts, htmlement) {
     counter = 0,
-    timer = setInterval(function () {
-        displayText(texts[counter]);
-        counter++
-        if (counter === texts.length) {
-            $('#happy-input').show()
-            clearInterval(timer);
-        }
-    }, 2000)
+        timer = setInterval(function () {
+            displayText(texts[counter]);
+            counter++
+            if (counter === texts.length) {
+                $(`${htmlement}`).show()
+                clearInterval(timer);
+            }
+        }, textSpeed)
 }
 
-function encounterWild(){
+function encounterWild() {
     console.log(poke_type, poke_name, happy_sound, sad_sound)
-        $.ajax({
-            url: server + "api/initialize-user",
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({"type": poke_type, "name": poke_name, "happy": happy_sound, "sad": sad_sound}),
-            dataType: 'json'
-        }).done(function (result) {
-            texts = result.texts
-            counter = 0,
-                timer = setInterval(function () {
-                    displayText(texts[counter]);
-                    counter++
-                    if (counter === texts.length) {
-                        $('#happy-input').show()
-                        clearInterval(timer);
-                    }
-                }, 2000)
-            
-        })
+    $.ajax({
+        url: server + "api/initialize-user",
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ "type": poke_type, "name": poke_name, "happy": happy_sound, "sad": sad_sound }),
+        dataType: 'json'
+    }).done(function (result) {
+        texts = result.texts
+        counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    clearInterval(timer);
+                }
+            }, textSpeed)
+
+    })
 }
 
-$('#poke-choice-buttons').on('click', '.choose-type', function(){
+$('#poke-choice-buttons').on('click', '.choose-type', function () {
     poke_type = this.value;
     $('#poke-choice-buttons').hide();
     $('#main').html("")
     promptName(poke_type);
 })
 
-$('#name-input-button').on('click', function(){
+$('#name-input-button').on('click', function () {
     poke_name = $('#name-input-text').val();
     $('#name-input').hide();
     $('#main').html("")
     promptSad(poke_name);
 })
 
-$('#sad-input-button').on('click', function(){
+$('#sad-input-button').on('click', function () {
     sad_sound = $('#sad-input-text').val();
     $('#sad-input').hide();
     $('#main').html("")
     promptHappy(poke_name);
 })
 
-$('#happy-input-button').on('click', function(){
+$('#happy-input-button').on('click', function () {
     happy_sound = $('#happy-input-text').val();
     $('#happy-input').hide();
     $('#main').html("")
-    console.log(happy_sound)
+    encounterWild();
 })
