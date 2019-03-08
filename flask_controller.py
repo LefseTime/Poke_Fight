@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for, jsonify, request, session
-# from flask_session import Session
-from fight import Fight, Round
+from fight import Fight, Round, RoundResult
 from poke import Poke, BulbousSore, CharMangler, SquirtGun, MagiKrap
 app = Flask(__name__)
 import flask_ui as ui
@@ -92,11 +91,29 @@ def initialize_user():
 @app.route("/api/round", methods=['POST'])
 def initialize_round():
     json_data = request.get_json()
-    move = json_data['move']
+
+    user_move = json_data['move']
+    user_attack = session['user_poke_attack']
+    user_defense = session['user_poke_defense']
+    user_speed = session['user_poke_speed']
+    user_hp = session['user_poke_current_hp']
+
+    wild_attack = session['wild_poke_attack']
+    wild_defense = session['wild_poke_defense']
+    wild_speed = session['wild_poke_speed']
+    wild_hp = session['wild_poke_current_hp']
+
+    result = logic.newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_attack, wild_defense, wild_speed, wild_hp)
+    session['user_poke_current_hp'] = result.user_hp
+    session['wild_poke_current_hp'] = result.wild_hp
+
     return jsonify({
         'status': 'success',
-        'move': move,
-        'pleasework': session['user_poke_name']
+        'user_move': user_move,
+        'wild_move': result.wild_move,
+        'first_move': result.first_move,
+        'user_hp': session['user_poke_current_hp'],
+        'wild_hp': session['wild_poke_current_hp']
     })
 
 

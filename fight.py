@@ -30,6 +30,12 @@ class Fight:
         self__wild_move = wild_move
 
     
+class RoundResult:
+    def __init__(self, user_hp, wild_hp, wild_move):
+        self.user_hp = user_hp
+        self.wild_hp = wild_hp
+        self.wild_move = wild_move
+        self.first_move = "null"
 
 
 
