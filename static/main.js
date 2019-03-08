@@ -110,6 +110,7 @@ function displayHPChooseMove(userName, userHp, wildName, wildHp) {
     $('#wild-status').text(`${wildName}: ${wildHp}`)
 
     $('#move-choices').show();
+    $('#move-choices').html("");
     counter = 0
     moves.forEach(move => {
         counter++
@@ -146,11 +147,16 @@ function roundResults(result) {
                     displayHPChooseMove(user_name, user_hp, wild_name, wild_hp)
                 }
                 else {
-                    console.log('finished', user_hp, wild_hp)
+                    battleFinish(user_name, user_hp, wild_name, wild_hp)
                 }
             }
         }, textSpeed)
 
+}
+
+function battleFinish(user, user_hp, wild, wild_hp){
+    $('#main').html('');
+    timeout(["finish"], '')
 }
 
 $('#slow').on('click', function () {
