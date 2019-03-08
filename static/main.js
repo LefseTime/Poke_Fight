@@ -5,6 +5,7 @@ let poke_name;
 let sad_sound;
 let happy_sound;
 let moves = ['Attack', 'Defend and Regenerate HP', 'Flail Helplessly', 'Choose for Itself'];
+let session
 
 function displayText(text) {
     $('#main').append(`<p>${text}</p>`);
@@ -90,6 +91,7 @@ function encounterWild() {
         texts = result.texts
         user = result.user
         wild = result.wild
+        session = result.session
         counter = 0,
             timer = setInterval(function () {
                 displayText(texts[counter]);
