@@ -91,24 +91,23 @@ function encounterWild() {
         texts = result.texts
         user = result.user
         wild = result.wild
-        session = result.session
         counter = 0,
             timer = setInterval(function () {
                 displayText(texts[counter]);
                 counter++
                 if (counter === texts.length + 1) {
                     clearInterval(timer);
-                    displayHPChooseMove(user, wild)
+                    displayHPChooseMove(user.name, user.hp, wild.name, wild.hp)
                 }
             }, textSpeed)
     })
 }
 
-function displayHPChooseMove(user, wild){
+function displayHPChooseMove(userName, userHp, wildName, wildHp) {
     $('#hp-status').show();
     $('#main').html("");
-    $('#user-status').text(`${user.name}: ${user.hp}`)
-    $('#wild-status').text(`${wild.name}: ${wild.hp}`)
+    $('#user-status').text(`${userName}: ${userHp}`)
+    $('#wild-status').text(`${wildName}: ${wildHp}`)
 
     $('#move-choices').show();
     counter = 0
@@ -127,7 +126,31 @@ function makeMove(move) {
         dataType: 'json'
     }).done(function (result) {
         console.log(result)
+        roundResults(result)
     })
+}
+
+function roundResults(result) {
+    texts = result.texts
+    user_hp = parseInt(result.user_hp)
+    wild_hp = parseInt(result.wild_hp)
+    user_name = result.user_name
+    wild_name = result.wild_name
+    counter = 0,
+        timer = setInterval(function () {
+            displayText(texts[counter]);
+            counter++
+            if (counter === texts.length + 1) {
+                clearInterval(timer);
+                if (user_hp > 0 && wild_hp > 0) {
+                    displayHPChooseMove(user_name, user_hp, wild_name, wild_hp)
+                }
+                else {
+                    console.log('finished', user_hp, wild_hp)
+                }
+            }
+        }, textSpeed)
+
 }
 
 $('#slow').on('click', function () {

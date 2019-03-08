@@ -1,34 +1,32 @@
 from logic import initializeUserPoke, createWildPoke, regenerate, randomMove
 import flask_ui as ui
 from poke import Poke, BulbousSore, SquirtGun, CharMangler, MagiKrap
-from fight import Round, Fight, RoundResult
+from fight import Round, RoundResult
 import random
 
-def initializeFight(user, wild):
-    p_fight = Fight(user, wild)
-    return p_fight
 
-def newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_attack, wild_defense, wild_speed, wild_hp):
+def newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_attack, wild_defense, wild_speed, wild_hp, user_name, wild_name):
 
-    print(user_attack)
     if user_move == "4":
         user_move = randomMove()
     wild_move = randomMove()
     result = RoundResult(user_hp, wild_hp, wild_move)
 
-    # p_fight.set__user_move(user_move)
-    # p_fight.set__wild_move(wild_move)
-
-    # user_defense = user.defense
-    # wild_defense = wild.defense
     if user_move == "2":
         user_defense = defend(user_defense)
         user_hp = regenerate(user_hp)
-        # ui.displayDefense(user.name, user_hp)
+        result.texts.append("{} is defending!".format(user_name))
+        result.texts.append("{} regenerates HP to {}!".format(user_name, user_hp))
+    elif user_move == "3":
+        result.texts.append("{} is flopping about uselessly!".format(user_name))
+
     if wild_move == "2":
         wild_defense = defend(wild_defense)
         wild_hp = regenerate(wild_hp)
-        # ui.displayDefense(wild.name, wild_hp)
+        result.texts.append("{} is defending!".format(wild_name))
+        result.texts.append("{} regenerates HP to {}!".format(wild_name, wild_hp))
+    elif wild_move == "3":
+        result.texts.append("{} is flopping about uselessly!".format(wild_name))
 
     if user_move == "1" and wild_move == "1":
         first_move = determineOrder(user_speed, wild_speed)
@@ -36,32 +34,38 @@ def newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_att
         if first_move == "user":
             wild_hp = attack(user_attack, wild_defense, wild_hp)
             result.wild_hp = wild_hp
-            # ui.displayAttack(user, wild, wild_hp)
-            if user_hp <= 0 or wild_hp <= 0:
+            result.texts.append("{} attacks, bringing {}'s HP to {}!".format(user_name, wild_name, wild_hp))
+            if wild_hp <= 0:
+                result.texts.append("{} passes out!".format(wild_name))
                 return result
-                # return Round(user, user_hp, wild, wild_hp)
             user_hp = attack(wild_attack, user_defense, user_hp)
             result.user_hp = user_hp
-            # ui.displayAttack(wild, user, user_hp)
+            result.texts.append("{} attacks, bringing {}'s HP to {}!".format(wild_name, user_name, user_hp))
         else:
             user_hp = attack(wild_attack, user_defense, user_hp)
             result.user_hp = user_hp
-            # ui.displayAttack(wild, user, user_hp)
-            if user_hp <= 0 or wild_hp <= 0:
+            result.texts.append("{} attacks, bringing {}'s HP to {}!".format(wild_name, user_name, user_hp))
+            if user_hp <= 0:
+                result.texts.append("{} passes out!".format(user_name))
                 return result
-                # return Round(user, user_hp, wild, wild_hp)
             wild_hp = attack(user_attack, wild_defense, wild_hp)
             result.wild_hp = wild_hp
-            # ui.displayAttack(user, wild, wild_hp)
+            result.texts.append("{} attacks, bringing {}'s HP to {}!".format(user_name, wild_name, wild_hp))
 
     elif user_move == "1":
         wild_hp = attack(user_attack, wild_defense, wild_hp)
         result.wild_hp = wild_hp
-        # ui.displayAttack(user, wild, wild_hp)
+        result.texts.append("{} attacks, bringing {}'s HP to {}!".format(user_name, wild_name, wild_hp))
+        if wild_hp <= 0:
+                result.texts.append("{} passes out!".format(wild_name))
+                return result
     elif wild_move == "1":
         user_hp = attack(wild_attack, user_defense, user_hp)
         result.user_hp = user_hp
-        # ui.displayAttack(wild, user, user_hp)
+        result.texts.append("{} attacks, bringing {}'s HP to {}!".format(wild_name, user_name, user_hp))
+        if user_hp <= 0:
+                result.texts.append("{} passes out!".format(user_name))
+                return result
 
     return result
 

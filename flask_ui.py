@@ -21,5 +21,5 @@ def prompt_happy(name):
     return texts
 
 def encounterWildPoke(wild_poke):
-    texts = ["Suddenly a wild {} appears.".format(wild_poke.type), "The {} wants to have a...".format(wild_poke.type), "POKE_FIGHT™", "Suddenly you realize...", "THAT IS THE NAME OF THIS APP!!!!"]
+    texts = ["Suddenly a {} appears.".format(wild_poke.name), "The {} wants to have a...".format(wild_poke.name), "POKE_FIGHT™", "Suddenly you realize...", "THAT IS THE NAME OF THIS APP!!!!"]
     return texts

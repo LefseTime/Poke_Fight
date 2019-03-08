@@ -18,13 +18,13 @@ def createWildPoke():
     types = ["SquirtGun", "CharMangler", "BulbousSore", "MagiKrap"]
     type = random.choice(types)
     if type == "SquirtGun":
-        return SquirtGun("SquirtGun", "pew pew", "squish")
+        return SquirtGun("Wild SquirtGun", "pew pew", "squish")
     elif type == "BulbousSore":
-        return BulbousSore("BulbousSore", "mwow", "*festers squishily*")
+        return BulbousSore("Wild BulbousSore", "mwow", "*festers squishily*")
     elif type == "CharMangler":
-        return CharMangler("CharMangler", "eheheheh", "mmmmmnnnnn")
+        return CharMangler("Wild CharMangler", "eheheheh", "mmmmmnnnnn")
     elif type == "MagiKrap":
-        return MagiKrap("MagiKrap", "*flop*", "*flop flop*")
+        return MagiKrap("Wild MagiKrap", "*flop*", "*flop flop*")
 
 
 def fight(user, wild):

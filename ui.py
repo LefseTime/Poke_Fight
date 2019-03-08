@@ -44,7 +44,7 @@ def displayHpStatus(user_name, wild_type, user_hp, wild_hp):
     print("\n---------------\n  HP Status  \n---------------\n{}: {}\nWild {}: {}\n".format(user_name, str(user_hp), wild_type, str(wild_hp)))
 
 def encounterWildPoke(wild_poke):
-    input("\nSuddenly a wild {} appears. The {} wants to have a\n\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n".format(wild_poke.type,wild_poke.type))
+    input("\nSuddenly a {} appears. The {} wants to have a\n\n\t--------------------------------------------------------\n\t\t\t\tPOKE_FIGHT™  \n\t--------------------------------------------------------\n".format(wild_poke.type,wild_poke.type))
     input("\nSuddenly you realize... ")
     input("\n\t--------------------------------------------------------\n\t\t... THAT IS THE NAME OF THIS APP!!!!  \n\t--------------------------------------------------------\n")
 
