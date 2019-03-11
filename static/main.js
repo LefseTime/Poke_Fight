@@ -1,4 +1,4 @@
-const server = 'http://localhost:8000/'
+const server = 'http://http://poke-underscore-fight.herokuapp.com/'
 let textSpeed = 500
 let poke_type;
 let poke_name;
