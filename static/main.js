@@ -1,4 +1,5 @@
-const server = 'http://poke-underscore-fight.herokuapp.com/'
+// const server = 'http://poke-underscore-fight.herokuapp.com/'
+const server = ''
 let textSpeed = 2000
 let poke_type;
 let poke_name;

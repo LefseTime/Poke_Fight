@@ -15,6 +15,7 @@ def newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_att
     if user_move == "2":
         user_defense = defend(user_defense)
         user_hp = regenerate(user_hp)
+        result.user_hp = user_hp
         result.texts.append("{} is defending!".format(user_name))
         result.texts.append("{} regenerates HP to {}!".format(user_name, user_hp))
     elif user_move == "3":
@@ -23,6 +24,7 @@ def newRound(user_move, user_attack, user_defense, user_speed, user_hp, wild_att
     if wild_move == "2":
         wild_defense = defend(wild_defense)
         wild_hp = regenerate(wild_hp)
+        result.wild_hp = wild_hp
         result.texts.append("{} is defending!".format(wild_name))
         result.texts.append("{} regenerates HP to {}!".format(wild_name, wild_hp))
     elif wild_move == "3":
