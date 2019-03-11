@@ -1,5 +1,5 @@
 const server = 'http://poke-underscore-fight.herokuapp.com/'
-let textSpeed = 500
+let textSpeed = 2000
 let poke_type;
 let poke_name;
 let sad_sound;
@@ -141,7 +141,7 @@ function roundResults(result) {
         timer = setInterval(function () {
             displayText(texts[counter]);
             counter++
-            if (counter === texts.length) {
+            if (counter === texts.length + 1) {
                 clearInterval(timer);
                 if (user_hp > 0 && wild_hp > 0) {
                     displayHPChooseMove(user_name, user_hp, wild_name, wild_hp)
@@ -175,11 +175,11 @@ function battleFinish(user, user_hp, wild, wild_hp){
     }
 
 $('#slow').on('click', function () {
-    textSpeed = 3000;
+    textSpeed = 2000;
 })
 
 $('#medium').on('click', function () {
-    textSpeed = 2000;
+    textSpeed = 1500;
 })
 
 $('#fast').on('click', function () {
