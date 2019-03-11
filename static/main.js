@@ -1,4 +1,4 @@
-const server = 'http://localhost:5000/'
+const server = 'http://localhost:8000/'
 let textSpeed = 500
 let poke_type;
 let poke_name;
@@ -141,7 +141,7 @@ function roundResults(result) {
         timer = setInterval(function () {
             displayText(texts[counter]);
             counter++
-            if (counter === texts.length + 1) {
+            if (counter === texts.length) {
                 clearInterval(timer);
                 if (user_hp > 0 && wild_hp > 0) {
                     displayHPChooseMove(user_name, user_hp, wild_name, wild_hp)
@@ -155,9 +155,24 @@ function roundResults(result) {
 }
 
 function battleFinish(user, user_hp, wild, wild_hp){
-    $('#main').html('');
-    timeout(["finish"], '')
-}
+    texts = []
+    $('#hp-status').hide();
+    $('#main').html("");
+    if (user_hp <= 0) {
+        texts =[`${user} passes out!`]
+    } else {
+        texts = [`${wild} passes out!`]
+    }
+    counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    clearInterval(timer);
+                    encounterWild()
+                }
+            }, textSpeed)
+    }
 
 $('#slow').on('click', function () {
     textSpeed = 3000;

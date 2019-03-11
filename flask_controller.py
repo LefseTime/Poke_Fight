@@ -6,14 +6,14 @@ import flask_ui as ui
 import flask_logic as logic
 import uuid
 
-app.secret_key = 'abc123'
+app.secret_key = 'have2trapallofem'
 @app.route("/")
 def main():
     return render_template('main.html')
 
 
-def pokeFight(user_poke, wild_poke):
-    logic.fight(user_poke, wild_poke)
+# def pokeFight(user_poke, wild_poke):
+#     logic.fight(user_poke, wild_poke)
 
 
 @app.route("/api/intro", methods=['GET'])

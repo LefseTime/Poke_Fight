@@ -24,10 +24,6 @@ header {
     margin-right: 5em;
 }
 
-/* p {
-    margin: .5em, 50em;
-} */
-
 .accordion, .card {
     border: black;
     margin-right: auto;
