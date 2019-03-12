@@ -23,6 +23,13 @@ def intro():
         'texts': ui.intro_texts()
     })
 
+@app.route("/api/outro", methods=['GET'])
+def outro():
+    return jsonify({
+        'status': 'success',
+        'texts': ui.outro_texts(session['user_poke_name'], session['user_poke_sad'])
+    })
+
 @app.route("/api/type-list", methods=['GET'])
 def type_list():
     return jsonify({

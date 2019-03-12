@@ -92,6 +92,7 @@ function encounterWild() {
         texts = result.texts
         user = result.user
         wild = result.wild
+        $('#main').html('')
         counter = 0,
             timer = setInterval(function () {
                 displayText(texts[counter]);
@@ -170,10 +171,37 @@ function battleFinish(user, user_hp, wild, wild_hp){
                 counter++
                 if (counter === texts.length) {
                     clearInterval(timer);
-                    encounterWild()
+                    continueQuestion();
                 }
             }, textSpeed)
     }
+
+function continueQuestion(){
+    $('#continue-div').show();
+    $('#main').html("")
+}
+
+function endGame(){
+    $.ajax({
+        url: server + "api/outro",
+        method: 'GET',
+        datatype: 'json'
+    }).done(function (result) {
+        $('#continue-div').hide();
+        $('#main').show();
+        let texts = result.texts
+        counter = 0,
+            timer = setInterval(function () {
+                displayText(texts[counter]);
+                counter++
+                if (counter === texts.length) {
+                    clearInterval(timer);
+                    $('#main').html("");
+                    $('#begin').show();
+                }
+            }, textSpeed)
+    })
+}
 
 $('#slow').on('click', function () {
     textSpeed = 2000;
@@ -239,4 +267,14 @@ $('#move-choices').on('click', '.choose-move', function () {
     $('#move-choices').hide();
     $('#main').html("")
     makeMove(move);
+})
+
+$('#continue-div').on('click', '.continue-choice', function(){
+    choice = this.value
+    $('#continue-div').hide();
+    if (choice === "continue"){
+        encounterWild()
+    } else {
+        endGame()
+    }
 })

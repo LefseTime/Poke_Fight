@@ -83,10 +83,16 @@ button {
     color: aliceblue;
     border: none;
     outline: none;
+    margin: 0 1.5em;
 }
 
 button:hover, :active, :focus {
     color: red;
+}
+
+.speed-button {
+    margin: 0;
+    padding: 0;
 }
 
 #begin {
