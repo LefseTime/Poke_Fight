@@ -7,7 +7,7 @@ def outro_texts(name, sound):
     texts = ["In your absence, the magical world of JoeToe slips into darkness and chaos.",
         "The evil 'Group Rock' rises to power, forcing thousands into questionable fashion choices and sadness.",
         "Even {} is taken in, and grows a flowing soft mullet as you slowly slide from its memory.".format(name),
-        "'{}, {}...' it cries sadly into its silken tresses each night. '{}, {}...'".format(sound.title(),sound,sound.title(),sound),
+        "'{}, {}...' it sobs into its silken tresses each night. '{}, {}...'".format(sound.title(),sound,sound.title(),sound),
         "Farewell, dear Trainer. You were our last hope, and you abandoned us. Farewell.","","THE END"]
     return texts    
 

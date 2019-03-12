@@ -196,7 +196,6 @@ function endGame(){
                 counter++
                 if (counter === texts.length) {
                     clearInterval(timer);
-                    $('#main').html("");
                     $('#begin').show();
                 }
             }, textSpeed)

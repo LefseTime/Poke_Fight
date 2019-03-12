@@ -1,8 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<div id="start-div">
-    <button id='begin'>Start</button>
-</div>
 
 <div id='hp-status' style="display: none;">
     <span>HP Status</span><br>
@@ -15,40 +12,43 @@
 </div>
 <div id='main'>
 </div>
+<div id="start-div">
+    <button id='begin'>Start</button>
+</div>
 <div id='yes-no-song' style="display: none;">
-    
-        <!-- <button type="button" id="yes-song" value="yes">Yes</button> -->
-        <button type="button" id="no-song" value="no">Continue</button>
-    
+
+    <!-- <button type="button" id="yes-song" value="yes">Yes</button> -->
+    <button type="button" id="no-song" value="no">Continue</button>
+
 </div>
 <div id='poke-choice-buttons' style="display: none;">
 </div>
 <div id='name-input' style="display: none;">
-    
-        <input id='name-input-text' type="text">
-        <button type="button" id="name-input-button">Enter</button>
-    
+
+    <input id='name-input-text' type="text">
+    <button type="button" id="name-input-button">Enter</button>
+
 </div>
 <div id='sad-input' style="display: none;">
-    
-        <input id='sad-input-text' type="text">
-        <button type="button" id="sad-input-button">Enter</button>
-    
+
+    <input id='sad-input-text' type="text">
+    <button type="button" id="sad-input-button">Enter</button>
+
 </div>
 
 <div id='happy-input' style="display: none;">
-    
-        <input id='happy-input-text' type="text">
-        <button type="button" id="happy-input-button">Enter</button>
-    
+
+    <input id='happy-input-text' type="text">
+    <button type="button" id="happy-input-button">Enter</button>
+
 </div>
 
 <div id='continue-div' style="display: none;">
-        <p>Continue beating up wild Pokes?</p>
-        <button type="button" id="continue-button" class="continue-choice" value="continue">Continue Quest</button>
-    
-        <button type="button" id="exit-button" class="continue-choice" value="end">End Quest</button>
-    
+    <p>Continue beating up wild Pokes?</p>
+    <button type="button" id="continue-button" class="continue-choice" value="continue">Continue Quest</button>
+
+    <button type="button" id="exit-button" class="continue-choice" value="end">End Quest</button>
+
 </div>
 
 {% endblock content %}

@@ -99,5 +99,5 @@ def exit(poke):
     input("\nIn your absence, the magical world of JoeToe slips into darkness and chaos.")
     input("\nThe evil 'Group Rock' rises to power, forcing thousands into questionable fashion choices and sadness.")
     input("\nEven {} is taken in, and grows a flowing soft mullet as you slowly slide from its memory.".format(poke.name))
-    input("\n'{}, {}...' it cries sadly into its silken tresses each night. '{}, {}...'".format(cap_sound,sound,cap_sound,sound))
+    input("\n'{}, {}...' it sobs into its silken tresses each night. '{}, {}...'".format(cap_sound,sound,cap_sound,sound))
     input("\n\nFarewell, dear Trainer. You were our last hope, and you abandoned us. Farewell.\n\n\n\t--------------------------------------------------------\n\t\t\t\tTHE END  \n\t--------------------------------------------------------\n")
