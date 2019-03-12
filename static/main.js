@@ -33,6 +33,7 @@ function chooseType() {
         types = result.types
         timer = setInterval(function () {
             displayText("Which Poke do you choose?");
+            $('#poke-choice-buttons').html("");
             $('#poke-choice-buttons').show();
             types.forEach(type => {
                 $('#poke-choice-buttons').append(`<button type='button' class="choose-type" id="type" value="${type}">${type}</button>`);
@@ -221,6 +222,7 @@ $('#begin').on('click', function () {
         datatype: 'json'
     }).done(function (result) {
         $('#begin').hide();
+        $('#main').html("");
         $('#main').show();
         let texts = result.texts
         timeout(texts, "#yes-no-song");
