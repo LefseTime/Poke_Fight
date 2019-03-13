@@ -1,27 +1,45 @@
 body {
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     background-color: black;
     color: aliceblue;
     margin: 1em 0em;
     font-family: 'VT323', monospace;
     font-size: 2em;
+    width: 100%;
+    min-height: 100%;
 }
 
 header {
     width: 100%;
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
 }
 
 #start-div {
     display: flex;
     justify-content: center;
+    align-content: center;
 }
 
 #main {
-    display: inline-block;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    /* display: inline-block;
     margin-left: 5em;
-    margin-right: 5em;
+    margin-right: 5em; */
+}
+
+.options {
+    margin: auto;
+    text-align: center;
 }
 
 .accordion, .card {
@@ -55,8 +73,16 @@ header {
 }
 
 #hp-status {
+    display: flex;
+    flex-flow: column;
+    margin: auto;
     font-size: 2em;
-    margin-bottom: 1.5em;
+    justify-content: center;
+    align-content: center;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    /* margin-bottom: 1.5em; */
 }
 
 #statuses {
@@ -74,6 +100,11 @@ header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around; 
+    width: 100%;
+}
+
+.choose-move {
+    width: 100%;
 }
 
 button {
@@ -83,7 +114,7 @@ button {
     color: aliceblue;
     border: none;
     outline: none;
-    margin: 0 1.5em;
+    margin: auto;
 }
 
 button:hover, :active, :focus {
@@ -103,4 +134,5 @@ input{
     font-family: 'VT323', monospace;
     font-size: 2em;
     text-align: center;
+    margin: auto;
 }
