@@ -127,7 +127,7 @@ button:hover, :active, :focus {
 }
 
 #begin {
-    margin-top: 3em;
+    margin-top: 1em;
 }
 
 input{
@@ -135,4 +135,13 @@ input{
     font-size: 2em;
     text-align: center;
     margin: auto;
+}
+
+@media only screen 
+  and (min-device-width: 0px) 
+  and (max-device-width: 900px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body, button, input, #hp-status, #text-speed-toggle, h2 {
+        font-size: 1.5em;
+    }
 }
