@@ -44,6 +44,8 @@ header {
 
 .accordion, .card {
     border: black;
+    background-color: black;
+    outline-color: black;
     margin-right: auto;
 }
 
